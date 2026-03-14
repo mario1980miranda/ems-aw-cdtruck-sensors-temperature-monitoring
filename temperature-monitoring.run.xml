@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="temperature-monitoring" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.codetruck.algasensors.temperature.monitoring.TemperatureMonitoringApplication" />
+    <module name="temperature-monitoring.main" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
