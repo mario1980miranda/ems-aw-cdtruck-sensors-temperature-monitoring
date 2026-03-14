@@ -1,6 +1,6 @@
 package com.codetruck.algasensors.temperature.monitoring.api.controller;
 
-import com.codetruck.algasensors.temperature.monitoring.api.model.TemperatureLogOutput;
+import com.codetruck.algasensors.temperature.monitoring.api.model.TemperatureLogData;
 import com.codetruck.algasensors.temperature.monitoring.domain.model.SensorId;
 import com.codetruck.algasensors.temperature.monitoring.domain.model.TemperatureLog;
 import com.codetruck.algasensors.temperature.monitoring.domain.repository.TemperatureLogRepository;
@@ -22,12 +22,12 @@ public class TemperatureLogController {
     private final TemperatureLogRepository temperatureLogRepository;
 
     @GetMapping
-    public Page<TemperatureLogOutput> search(@PathVariable TSID sensorId,
-                                             @PageableDefault Pageable pageable) {
+    public Page<TemperatureLogData> search(@PathVariable TSID sensorId,
+                                           @PageableDefault Pageable pageable) {
         final Page<TemperatureLog> temperatureLogsPage = temperatureLogRepository
                 .findAllBySensorId(new SensorId(sensorId), pageable);
 
-        return temperatureLogsPage.map(temperatureLog -> TemperatureLogOutput.builder()
+        return temperatureLogsPage.map(temperatureLog -> TemperatureLogData.builder()
                 .id(temperatureLog.getId().getValue())
                 .value(temperatureLog.getValue())
                 .registeredAt(temperatureLog.getRegisteredAt())
